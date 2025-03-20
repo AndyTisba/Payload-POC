@@ -20,17 +20,60 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## MinIO Setup
 
-To learn more about Next.js, take a look at the following resources:
+### Déployer Docker MinIO
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+docker run -p 9000:9000 -p 9001:9001 -e "MINIO_ROOT_USER=admin" -e "MINIO_ROOT_PASSWORD=password" quay.io/minio/minio server /data --console-address ":9001"
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+⇒ Go to [localhost:9001](http://127.0.0.1:9001) and login with `admin/password`
 
-## Deploy on Vercel
+### Create a bucket
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Go to **http://localhost:9001**.
+- Click on **"Buckets"**
+- Click on **"Create Bucket"**
+- Name the bucket as **"media-dam"**
+- Click on **"Create Bucket"**.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Add files
+
+- On the page **“Object browser”**
+- Click on the bucket name **"media-dam"**.
+- Click on **"Upload File"**.
+- Select your images/videos
+- Validate
+
+### Read files
+
+(Maybe need to kill z-scaller)
+
+- Install `minio/mc`
+
+```bash
+brew install minio/stable/mc
+```
+
+- Configure `mc`
+
+```bash
+mc alias set myminio [http://127.0.0.1:9000](http://127.0.0.1:9000/) admin password
+```
+
+- To download file
+
+```bash
+mc cp myminio/media-dam/"filename" .
+```
+
+(It will download the file in the current folder)
+
+- Make bucket public
+
+```bash
+mc anonymous set public myminio/media-dam
+```
+
+(to check, go on http://127.0.0.1:9000/media-dam/filename )

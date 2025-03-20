@@ -11,6 +11,7 @@
     "stop:minio": "sh scripts/stop-minio.sh"
   },
   "dependencies": {
+    "@lexical/list": "^0.28.0",
     "@payloadcms/db-sqlite": "^3.28.1",
     "@payloadcms/next": "^3.28.1",
     "@payloadcms/payload-cloud": "^3.28.1",
@@ -20,6 +21,7 @@
     "payload": "^3.28.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "sharp": "^0.33.5",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
