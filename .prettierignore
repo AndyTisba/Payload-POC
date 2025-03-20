@@ -1,0 +1,41 @@
+# Build folders and dependencies  
+node_modules/  
+.next/  
+out/  
+dist/  
+
+# Configuration and environment files  
+.env  
+.env.local  
+.env.development  
+.env.production  
+.env.test  
+
+# Logs and cache  
+npm-debug.log  
+yarn-debug.log  
+yarn-error.log  
+pnpm-debug.log  
+.pnp  
+.pnp.js  
+.cache/  
+.vscode/  
+.idea/  
+
+# Next.js specific files  
+public/  
+coverage/  
+
+# Ignore lock files  
+package-lock.json  
+yarn.lock  
+pnpm-lock.yaml  
+
+# TypeScript declaration files auto-generated  
+*.d.ts  
+
+# Static assets and files
+static/  
+
+# CI scripts
+scripts/  
