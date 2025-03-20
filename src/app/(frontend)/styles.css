@@ -104,6 +104,12 @@ svg {
     padding: 24px;
   }
 
+  .role {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+  }
+
   .content {
     display: flex;
     flex-direction: column;

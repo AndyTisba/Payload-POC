@@ -6,17 +6,37 @@ import { fileURLToPath } from "url";
 
 import config from "@/payload.config";
 import "./styles.css";
+import { User, UserRole } from "@/collections/Users";
+
+const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`;
+
+const avatars: Record<UserRole, string> = {
+  admin: "👑",
+  contributor: "🎨",
+  validator: "🔍",
+};
+
+function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 export default async function HomePage() {
   const headers = await getHeaders();
   const payloadConfig = await config;
   const payload = await getPayload({ config: payloadConfig });
-  const { user } = await payload.auth({ headers });
-
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`;
+  const res = await payload.auth({ headers });
+  const user = res.user as User | null;
 
   return (
     <div className="home">
+      {user && (
+        <>
+          <h2 className="role">
+            {capitalizeFirstLetter(user.role)} {avatars[user.role]}
+          </h2>
+        </>
+      )}
+
       <div className="content">
         <picture>
           <source srcSet="http://localhost:9000/assets/image.high.jpg" />
