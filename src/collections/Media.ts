@@ -2,6 +2,7 @@ import type { CollectionConfig } from "payload";
 
 export const Media: CollectionConfig = {
   slug: "media",
+  versions: true, // payload has native versioning
   access: {
     read: () => true,
   },

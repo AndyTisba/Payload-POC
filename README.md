@@ -77,3 +77,22 @@ mc anonymous set public myminio/media-dam
 ```
 
 (to check, go on http://127.0.0.1:9000/media-dam/filename )
+
+## Versioning
+
+Payload has native versioning, we just need to add `versioning: true` to any collection
+
+```
+import { CollectionConfig } from 'payload/types';
+
+const Articles: CollectionConfig = {
+  slug: 'articles',
+  versions: true, // Active l'historisation
+  fields: [
+    { name: 'title', type: 'text', required: true },
+    { name: 'content', type: 'richText' },
+  ],
+};
+
+export default Articles;
+```
