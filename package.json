@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "start:minio": "sh scripts/start-minio.sh",
+    "stop:minio": "sh scripts/stop-minio.sh"
   },
   "dependencies": {
     "@payloadcms/db-sqlite": "^3.28.1",
