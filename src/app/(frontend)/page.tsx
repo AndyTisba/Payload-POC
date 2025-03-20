@@ -19,15 +19,15 @@ export default async function HomePage() {
     <div className="home">
       <div className="content">
         <picture>
-          <source srcSet="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg" />
+          <source srcSet="http://localhost:9000/assets/image.high.jpg" />
           <Image
-            alt="Payload Logo"
-            height={65}
-            src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-favicon.svg"
-            width={65}
+            alt="Mask"
+            height={750 / 5}
+            src="http://localhost:9000/assets/image.high.jpg"
+            width={565 / 5}
           />
         </picture>
-        {!user && <h1>Welcome to your new project.</h1>}
+        {!user && <h1>Welcome to Payload POC.</h1>}
         {user && <h1>Welcome back, {user.email}</h1>}
         <div className="links">
           <a
